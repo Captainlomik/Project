@@ -10,9 +10,15 @@ import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'products', component: ProductsComponent },
+  {
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+  },
+  {
+    path: 'coupens',
+    loadChildren: () => import('./coupens/coupens.module').then(m => m.CoupensModule)
+  },
   { path: 'statistics', component: StatisticsComponent },
-  { path: 'coupens', component: CoupensComponent },
   { path: 'media', component: MediaComponent },
   { path: 'settings', component: SettingsComponent },
 ];
