@@ -6,17 +6,23 @@
             <i class="fal fa-times close-icon"></i>
         </button>
     </div>
-    <ul class="sidenav-nav">
+    <div class="scrollwrap scrollwrap_delayed">
+          <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a href="" class="sidenav-nav-link" *ngIf="data.items && data.items.length > 0" (click)="handleClick(data)">
+            <a class="sidenav-nav-link" *ngIf="data.items && data.items.length > 0" (click)="handleClick(data)"
+                [ngClass]="getActiveClass(data)">
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
                 <i class="menu-collapse-icon" *ngIf="data.items && collapsed"
                     [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"></i>
             </a>
 
-            <a href="" class="sidenav-nav-link" *ngIf="!data.items || (data.items && data.items.length === 0)"
-                [routerLink]="[data.routerLink]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <a class="sidenav-nav-link" *ngIf="!data.items || (data.items && data.items.length === 0)"
+                [routerLink]="[data.routerLink]" 
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{exact:true}"
+                (click)="shrinkItem(data)"
+                >
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
             </a>
@@ -27,4 +33,6 @@
             </div>
         </li>
     </ul>
+    </div>
+  
 </div>

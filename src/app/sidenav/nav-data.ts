@@ -1,6 +1,6 @@
 import { INavbarData } from "./helper";
 
-export const navbarData:INavbarData[] = [
+export const navbarData: INavbarData[] = [
     {
         routerLink: 'dashboard',
         icon: 'fal fa-home',
@@ -9,7 +9,23 @@ export const navbarData:INavbarData[] = [
     {
         routerLink: 'products',
         icon: 'fal fa-box-open',
-        label: 'Products'
+        label: 'Products',
+        items: [
+            {
+                routerLink: 'products/level1.1',
+                label: 'Level 1.1',
+                items: [
+                    {
+                        routerLink: 'products/level2.1',
+                        label: 'Level 2.1'
+                    }
+                ]
+            },
+            {
+                routerLink: 'products/level1.2',
+                label: 'Level 1.2'
+            }
+        ]
     },
     {
         routerLink: 'statistics',
@@ -19,11 +35,15 @@ export const navbarData:INavbarData[] = [
     {
         routerLink: 'coupens',
         icon: 'fal fa-tags',
-        label: 'Coupens', 
-        items:[
+        label: 'Coupens',
+        items: [
             {
-                routerLink:'coupens/link',
-                label:'List Coupens'
+                routerLink: 'coupens/list',
+                label: 'List Coupens'
+            },
+            {
+                routerLink: 'coupens/create',
+                label: 'Create Coupens'
             }
         ]
     },
